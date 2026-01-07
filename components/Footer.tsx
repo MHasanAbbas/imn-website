@@ -11,7 +11,7 @@ export default function Footer() {
           height={48}
         />
         <p className="text-sm text-white/60">
-          Â© {new Date().getFullYear()} Inclusive Media Network. All rights reserved.
+          © {new Date().getFullYear()} Inclusive Media Network. All rights reserved.
         </p>
       </div>
     </footer>
