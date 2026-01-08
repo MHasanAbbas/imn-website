@@ -7,7 +7,8 @@
         </h2>
 
         <p className="mt-5 max-w-3xl text-white/80">
-          (Paste approved copy from Brand Book / voice instructions â€” do not invent text)
+          (Paste approved copy from Brand Book / voice instructions â€” do not invent text.)
+          Add one clear sentence that summarizes the primary value in plain language.
         </p>
       </div>
     </section>
