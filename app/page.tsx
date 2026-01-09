@@ -13,7 +13,7 @@ import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main id="top">
+    <main>
       <Navbar />
       <Hero />
       <About />
