@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
           width={170}
           height={48}
         />
-        <p className="text-sm text-white/60">
+        <p className="text-sm text-white">
           © {new Date().getFullYear()} Inclusive Media Network. All rights reserved.
         </p>
       </div>
