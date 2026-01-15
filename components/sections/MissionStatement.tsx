@@ -14,6 +14,7 @@ export default function MissionStatement() {
           </p>
           <SectionHeader
             title="Mission Statement"
+            highlight="Mission"
             className="text-imn-black"
           />
         </div>

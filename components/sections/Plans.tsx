@@ -12,10 +12,7 @@ export default function Plans() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70 md:text-xs">
             Roadmap
           </p>
-          <SectionHeader
-            title="Plans"
-            highlight="Plans"
-          />
+          <SectionHeader title="Plans" highlight="Plans" />
         </div>
 
         <div className="mt-8 max-w-3xl body-copy space-y-4 text-white">

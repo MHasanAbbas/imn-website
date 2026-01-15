@@ -20,41 +20,50 @@ export default function HowWeWork() {
           />
         </div>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[1.05fr,0.95fr] lg:items-center">
-          <div className="body-copy space-y-4 text-white">
-            <p className="text-white/80">
+        <div className="mt-12 lg:mt-16">
+          <div className="body-copy mb-12 max-w-3xl space-y-4 text-white/90">
+            <p className="text-lg text-white/80">
               Everything we do is built on four core principles. They&apos;re not just values on a wall-they&apos;re how we operate, every day.
             </p>
-
-            <div className="space-y-3">
-              <div>
-                <strong>Inclusivity</strong>
-                <br />
-                We champion diverse narratives, voices, and communities. Representation isn&apos;t a checkbox for us-it&apos;s the entire point.
-              </div>
-              <div>
-                <strong>Connection</strong>
-                <br />
-                We use deep networks and cultural insight to link brands with the right audiences, at the right time, in the right way.
-              </div>
-              <div>
-                <strong>Empowerment</strong>
-                <br />
-                We equip our clients with the tools, confidence, and clarity they need to scale their impact without losing authenticity.
-              </div>
-              <div>
-                <strong>Energy</strong>
-                <br />
-                Our storytelling is dynamic, bold, and human-first. We bring energy to every partnership because that&apos;s what creates momentum.
-              </div>
-            </div>
           </div>
 
-          <SectionImage
-            src="/images/imn-connection.jpg"
-            alt="Team collaboration within the Inclusive Media Network"
-            className="w-full max-w-2xl lg:justify-self-end"
-          />
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
+            <div className="body-copy space-y-6 text-white">
+              <div>
+                <strong className="text-lg text-white">Inclusivity</strong>
+                <br />
+                <span className="text-white/85">We champion diverse narratives, voices, and communities. Representation isn&apos;t a checkbox for us-it&apos;s the entire point.</span>
+              </div>
+              <div>
+                <strong className="text-lg text-white">Connection</strong>
+                <br />
+                <span className="text-white/85">We use deep networks and cultural insight to link brands with the right audiences, at the right time, in the right way.</span>
+              </div>
+              <div>
+                <strong className="text-lg text-white">Empowerment</strong>
+                <br />
+                <span className="text-white/85">We equip our clients with the tools, confidence, and clarity they need to scale their impact without losing authenticity.</span>
+              </div>
+              <div>
+                <strong className="text-lg text-white">Energy</strong>
+                <br />
+                <span className="text-white/85">Our storytelling is dynamic, bold, and human-first. We bring energy to every partnership because that&apos;s what creates momentum.</span>
+              </div>
+            </div>
+
+            <div className="relative lg:sticky lg:top-24">
+              <div
+                className="pointer-events-none absolute -left-8 -top-8 -right-8 -bottom-8 rounded-[32px] bg-gradient-to-br from-imn-orange/20 via-imn-teal/15 to-imn-purple/10 blur-3xl"
+                aria-hidden="true"
+              />
+              <SectionImage
+                src="/images/imn-connection.jpg"
+                alt="Team collaboration within the Inclusive Media Network"
+                className="relative z-10 w-full drop-shadow-[0_32px_100px_rgba(0,0,0,0.6)]"
+                aspectRatio="large"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
