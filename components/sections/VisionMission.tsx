@@ -1,4 +1,6 @@
-﻿export default function VisionMission() {
+import SectionHeader from "@/components/SectionHeader";
+
+export default function VisionMission() {
   return (
     <section
       id="vision"
@@ -6,19 +8,16 @@
       className="section-fade section-offset bg-imn-black text-imn-white"
     >
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <h2 className="heading text-3xl md:text-4xl font-semibold tracking-tight">
-          Our Vision & Mission
-        </h2>
-        <span
-          className="mt-3 block h-1 w-12"
-          style={{ background: "var(--imn-orange)" }}
+        <SectionHeader
+          kicker="Direction"
+          title="Vision & Mission"
         />
 
-        <div className="mt-6 max-w-3xl body-copy space-y-5 text-white">
+        <div className="mt-8 max-w-3xl body-copy space-y-5 text-white">
           <div>
-            <strong>Where We're Heading</strong>
+            <strong>Where We&apos;re Heading</strong>
             <br />
-            We're building the UK's leading multicultural media sales platform—not just by growing bigger, but by going deeper. Deeper insights. Deeper connections. Deeper impact.
+            We&apos;re building the UK&apos;s leading multicultural media sales platform-not just by growing bigger, but by going deeper. Deeper insights. Deeper connections. Deeper impact.
           </div>
 
           <div>
