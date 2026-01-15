@@ -8,7 +8,16 @@ export default function About() {
       className="section-fade section-offset bg-imn-grey text-imn-black"
     >
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <SectionHeader kicker="Overview" title="About" accentColor="orange" />
+        <div className="flex flex-col gap-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-imn-black/70 md:text-xs">
+            Overview
+          </p>
+          <SectionHeader
+            title="About"
+            highlight="About"
+            className="text-imn-black"
+          />
+        </div>
 
         <div className="mt-8 max-w-3xl body-copy space-y-5 text-imn-black">
           <div>

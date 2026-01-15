@@ -8,7 +8,15 @@ export default function Contact() {
       className="section-fade section-offset bg-imn-black text-imn-white"
     >
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <SectionHeader kicker="Contact" title="Keep Connected With Us" />
+        <div className="flex flex-col gap-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70 md:text-xs">
+            Contact
+          </p>
+          <SectionHeader
+            title="Keep Connected With Us"
+            highlight="Connected"
+          />
+        </div>
 
         <div className="mt-8 max-w-3xl body-copy space-y-4 text-white">
           <div>

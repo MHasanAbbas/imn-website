@@ -8,10 +8,15 @@ export default function HowWeChange() {
       className="section-fade section-offset bg-imn-black text-imn-white"
     >
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <SectionHeader
-          kicker="Focus Areas"
-          title="How We Change This Year"
-        />
+        <div className="flex flex-col gap-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70 md:text-xs">
+            Focus Areas
+          </p>
+          <SectionHeader
+            title="How We Change This Year"
+            highlight="Change"
+          />
+        </div>
 
         <div className="mt-8 max-w-3xl body-copy space-y-4 text-white">
           <div>

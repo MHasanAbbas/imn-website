@@ -8,7 +8,15 @@ export default function Plans() {
       className="section-fade section-offset bg-imn-black text-imn-white"
     >
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <SectionHeader kicker="Roadmap" title="Plans" />
+        <div className="flex flex-col gap-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70 md:text-xs">
+            Roadmap
+          </p>
+          <SectionHeader
+            title="Plans"
+            highlight="Plans"
+          />
+        </div>
 
         <div className="mt-8 max-w-3xl body-copy space-y-4 text-white">
           <div>

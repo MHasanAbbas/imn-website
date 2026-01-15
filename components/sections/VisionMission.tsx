@@ -8,10 +8,16 @@ export default function VisionMission() {
       className="section-fade section-offset bg-imn-black text-imn-white"
     >
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <SectionHeader
-          kicker="Direction"
-          title="Vision & Mission"
-        />
+        <div className="flex flex-col gap-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70 md:text-xs">
+            Direction
+          </p>
+          <SectionHeader
+            title="Vision & Mission"
+            highlight="Vision"
+            highlightColor="purple"
+          />
+        </div>
 
         <div className="mt-8 max-w-3xl body-copy space-y-5 text-white">
           <div>

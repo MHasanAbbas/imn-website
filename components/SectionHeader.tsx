@@ -1,86 +1,68 @@
-type AccentColor = "orange" | "teal" | "purple" | "white" | "black";
-type AccentStyle = "underline" | "bar" | "dot";
+type HighlightColor = "orange" | "teal" | "purple";
 
 type SectionHeaderProps = {
-  kicker?: string;
   title: string;
-  subtitle?: string;
-  align?: "left" | "center";
-  accent?: AccentStyle;
-  accentColor?: AccentColor;
+  highlight?: string;
+  highlightColor?: HighlightColor;
   as?: "h1" | "h2";
+  className?: string;
 };
 
-const accentPalette: Record<AccentColor, string> = {
-  orange: "bg-imn-orange",
-  teal: "bg-imn-teal",
-  purple: "bg-imn-purple",
-  white: "bg-imn-white",
-  black: "bg-imn-black",
+const highlightPalette: Record<HighlightColor, string> = {
+  orange: "text-imn-orange",
+  teal: "text-imn-teal",
+  purple: "text-imn-purple",
 };
 
 export default function SectionHeader({
-  kicker,
   title,
-  subtitle,
-  align = "left",
-  accent = "underline",
-  accentColor = "orange",
+  highlight,
+  highlightColor = "orange",
   as = "h2",
+  className = "",
 }: SectionHeaderProps) {
   const HeadingTag = as;
-  const accentClass = accentPalette[accentColor] ?? accentPalette.orange;
-  const inlineAccent = accent === "bar" || accent === "dot";
+  const sizeClass =
+    as === "h1" ? "text-4xl md:text-5xl" : "text-3xl md:text-[34px]";
+  const highlightClass = highlightPalette[highlightColor] ?? highlightPalette.orange;
+  const hasCustomTextColor =
+    className
+      .split(/\s+/)
+      .filter(Boolean)
+      .some((token) => token.startsWith("text-") || token.startsWith("!text-"));
+  const textColorClass = hasCustomTextColor ? "" : "text-white";
 
-  const accentElement =
-    accent === "underline" ? (
-      <span
-        className={`mt-4 block h-[2px] w-16 rounded-full ${accentClass} opacity-80 md:w-20`}
-        aria-hidden="true"
-      />
-    ) : (
-      <span
-        className={`${accentClass} ${
-          accent === "bar" ? "h-8 w-[2px]" : "h-2 w-2"
-        } inline-flex rounded-full opacity-80`}
-        aria-hidden="true"
-      />
-    );
+  let highlightUsed = false;
+  const renderedTitle = highlight
+    ? title.split(/(\s+)/).map((segment, idx) => {
+        const trimmed = segment.trim();
+        const plain = trimmed.replace(/[^\w'-]/g, "");
+        const isMatch =
+          !highlightUsed &&
+          plain.length > 0 &&
+          plain.toLowerCase() === highlight.toLowerCase();
+
+        if (isMatch) {
+          highlightUsed = true;
+        }
+
+        return (
+          <span key={`${segment}-${idx}`} className={isMatch ? highlightClass : undefined}>
+            {segment}
+          </span>
+        );
+      })
+    : title;
 
   return (
-    <div
-      className={`flex flex-col gap-3 ${
-        align === "center" ? "items-center text-center" : "items-start"
-      }`}
-    >
-      {kicker ? (
-        <p className="text-[11px] font-semibold uppercase tracking-[0.3em] opacity-60 md:text-xs">
-          {kicker}
-        </p>
-      ) : null}
-
-      <div
-        className={`flex flex-wrap items-center gap-3 ${
-          align === "center" ? "justify-center" : ""
-        }`}
-      >
-        {inlineAccent ? accentElement : null}
-        <HeadingTag
-          className={`heading ${
-            as === "h1" ? "text-4xl md:text-5xl" : "text-3xl md:text-[34px]"
-          } leading-[1.08] tracking-tight`}
-        >
-          {title}
-        </HeadingTag>
-      </div>
-
-      {accent === "underline" ? accentElement : null}
-
-      {subtitle ? (
-        <p className="body-copy max-w-3xl text-sm opacity-80 md:text-base">
-          {subtitle}
-        </p>
-      ) : null}
+    <div className={`flex flex-col items-start gap-3 ${textColorClass} ${className}`.trim()}>
+      <HeadingTag className={`heading font-bold leading-[1.05] tracking-tight ${sizeClass}`}>
+        {renderedTitle}
+      </HeadingTag>
+      <span
+        className="block h-1 w-14 rounded-full bg-[#F04D24]"
+        aria-hidden="true"
+      />
     </div>
   );
 }

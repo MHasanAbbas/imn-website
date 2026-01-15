@@ -9,7 +9,16 @@ export default function HowWeWork() {
       className="section-fade section-offset bg-imn-black text-imn-white"
     >
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <SectionHeader kicker="Approach" title="How We Work" />
+        <div className="flex flex-col gap-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70 md:text-xs">
+            Approach
+          </p>
+          <SectionHeader
+            title="How We Work"
+            highlight="Work"
+            highlightColor="teal"
+          />
+        </div>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1.05fr,0.95fr] lg:items-center">
           <div className="body-copy space-y-4 text-white">
