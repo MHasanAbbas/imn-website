@@ -19,7 +19,7 @@ export default function Hero() {
           />
         </div>
         <p className="body-copy mt-6 max-w-3xl text-base text-white/80 md:text-lg">
-          We connect you with the audiences that matter-through media, partnerships, and content that resonate.
+          We help reach diverse communities of the UK through multicultural media and content.
         </p>
       </div>
     </section>

@@ -12,21 +12,22 @@ export default function Contact() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70 md:text-xs">
             Contact
           </p>
-          <SectionHeader
-            title="Keep Connected With Us"
-            highlight="Connected"
-          />
+          <SectionHeader title="Contact us" highlight="Contact" />
         </div>
 
         <div className="mt-8 max-w-3xl body-copy space-y-4 text-white">
-          <div>
-            <strong>Let&apos;s Talk</strong>
-          </div>
+          <p>Ready to connect with Multicultural Britain?</p>
           <p>
             Whether you&apos;re looking to launch a campaign, explore a partnership, or just want to understand how we work-we&apos;re here.
           </p>
-          <p>Reach out. Let&apos;s build something meaningful together.</p>
-          <p className="text-white/70">[Note: Contact form and details to follow]</p>
+          <div className="space-y-2">
+            <p>Email:</p>
+            <p>Phone:</p>
+            <p>Office:</p>
+          </div>
+          <p className="text-white/70 text-sm">
+            Confidential - Not for Public Consumption or Distribution
+          </p>
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ export default function About() {
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
         <div className="flex flex-col gap-3">
           <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-imn-black/70 md:text-xs">
-            Overview
+            About
           </p>
           <SectionHeader
             title="About"
@@ -21,36 +21,18 @@ export default function About() {
 
         <div className="mt-8 max-w-3xl body-copy space-y-5 text-imn-black">
           <div>
-            <strong>Who We Are</strong>
+            <strong>The bridge between brands and multicultural Britan</strong>
             <br />
-            Inclusive Media Network is a multicultural media sales and partnerships platform built on one belief: authentic connection drives real results.
+            We are a multicultural media network dedicated to connecting media agencies and multicultural communities. Our goal is to drive incremental reach and growth through culturally relevant content that creates authentic connections and increases brand visibility.
           </div>
 
-          <div>
-            <strong>What We Do</strong>
-            <br />
-            We specialise in four areas that help brands reach diverse audiences with confidence:
-            <ul className="mt-3 list-inside list-disc space-y-2">
-              <li>
-                <strong>Media Sales</strong> - Placing your message where it matters most
-              </li>
-              <li>
-                <strong>Sponsorship & Partnerships</strong> - Building alliances that amplify impact
-              </li>
-              <li>
-                <strong>Content Creation & Production</strong> - Stories that speak to communities, not at them
-              </li>
-              <li>
-                <strong>Creator & Influencer Campaigns</strong> - Authentic voices, authentic reach
-              </li>
-            </ul>
-          </div>
+          <p>
+            With 35 years of industry working across hundreds of brands alongside real-life experiences, we expertly navigate the complex multicultural media landscape, ensuring the right channels and content partners are chosen for each client brief and target audiences.
+          </p>
 
-          <div>
-            <strong>Our Mission</strong>
-            <br />
-            To connect brands with multicultural audiences across the UK-creating partnerships that are meaningful, measurable, and built to last.
-          </div>
+          <p>
+            We pride ourselves on our commitment to cultivating meaningful connections, enabling brands to not only reach but genuinely engage and grow within a variety of cultural landscapes.
+          </p>
         </div>
       </div>
     </section>

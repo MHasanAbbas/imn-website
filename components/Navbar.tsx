@@ -6,22 +6,28 @@ import Image from "next/image";
 const navLinks = [
   { id: "top", label: "Home" },
   { id: "about", label: "About" },
+  { id: "services", label: "Services" },
   { id: "vision", label: "Vision" },
   { id: "work", label: "Work" },
+  { id: "plans", label: "Plans" },
   { id: "team", label: "Team" },
+  { id: "communities", label: "Communities" },
   { id: "contact", label: "Contact" },
 ];
 
 const brandOrange = "#F04D24";
 const sectionToNav: Record<string, string> = {
   top: "top",
+  top: "top",
   about: "about",
-  "mission-statement": "about",
+  services: "services",
   vision: "vision",
-  plans: "vision",
+  "mission-statement": "vision",
   work: "work",
   change: "work",
+  plans: "plans",
   team: "team",
+  communities: "communities",
   contact: "contact",
 };
 
