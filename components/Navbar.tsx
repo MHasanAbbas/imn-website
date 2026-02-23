@@ -18,7 +18,6 @@ const navLinks = [
 const brandOrange = "#F04D24";
 const sectionToNav: Record<string, string> = {
   top: "top",
-  top: "top",
   about: "about",
   services: "services",
   vision: "vision",
