@@ -23,7 +23,7 @@ export default function Contact() {
           <div className="space-y-2">
             <p>Email:</p>
             <p>Phone:</p>
-            <p>Office:</p>
+            <p>Office: 71-75 Shelton Street, Covent Garden, London, United Kingdom, WC2H</p>
           </div>
           <p className="text-white/70 text-sm">
             Confidential - Not for Public Consumption or Distribution
