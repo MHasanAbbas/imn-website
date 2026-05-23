@@ -1,5 +1,7 @@
 "use client";
 
+import { FormEvent, useState } from "react";
+
 const enquiryOptions = [
   "Media Planning & Buying",
   "Sponsorship & Partnerships",
@@ -9,8 +11,10 @@ const enquiryOptions = [
   "General Enquiry",
 ] as const;
 
-const destinationEmail = "newbusiness@inclusivemedianetwork.com";
-const emailSubject = "New Business Enquiry - Inclusive Media Network";
+const successMessage =
+  "Thank you. Your enquiry has been sent to our new business team.";
+const errorMessage =
+  "Sorry, something went wrong. Please try again or email newbusiness@inclusivemedianetwork.com directly.";
 
 function getFieldValue(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -18,35 +22,96 @@ function getFieldValue(formData: FormData, key: string) {
 }
 
 export default function ContactEnquiryForm() {
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionState, setSubmissionState] = useState<
+    | { type: "idle"; message: "" }
+    | { type: "success" | "error"; message: string }
+  >({ type: "idle", message: "" });
+
+  function clearFieldError(
+    event: FormEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) {
+    event.currentTarget.setCustomValidity("");
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const form = event.currentTarget;
+    const formData = new FormData(form);
+    const fullNameInput = form.elements.namedItem("fullName");
+    const workEmailInput = form.elements.namedItem("workEmail");
+    const requirementsInput = form.elements.namedItem("requirements");
+
+    if (
+      !(fullNameInput instanceof HTMLInputElement) ||
+      !(workEmailInput instanceof HTMLInputElement) ||
+      !(requirementsInput instanceof HTMLTextAreaElement)
+    ) {
+      setSubmissionState({ type: "error", message: errorMessage });
+      return;
+    }
+
+    fullNameInput.setCustomValidity("");
+    workEmailInput.setCustomValidity("");
+    requirementsInput.setCustomValidity("");
+
+    const payload = {
+      fullName: getFieldValue(formData, "fullName"),
+      company: getFieldValue(formData, "company"),
+      workEmail: getFieldValue(formData, "workEmail"),
+      phoneNumber: getFieldValue(formData, "phoneNumber"),
+      enquiryType: getFieldValue(formData, "enquiryType"),
+      requirements: getFieldValue(formData, "requirements"),
+      budget: getFieldValue(formData, "budget"),
+      timeline: getFieldValue(formData, "timeline"),
+      companyWebsite: getFieldValue(formData, "companyWebsite"),
+    };
+
+    if (!payload.fullName) {
+      fullNameInput.setCustomValidity("Full name is required.");
+    }
+
+    if (!payload.workEmail) {
+      workEmailInput.setCustomValidity("Work email is required.");
+    }
+
+    if (!payload.requirements) {
+      requirementsInput.setCustomValidity(
+        "Campaign / project requirements are required.",
+      );
+    }
+
     if (!form.reportValidity()) {
       return;
     }
 
-    const formData = new FormData(form);
-    const mailtoBody = [
-      "New Business Enquiry",
-      "",
-      `Full Name: ${getFieldValue(formData, "fullName")}`,
-      `Company / Organisation: ${getFieldValue(formData, "company")}`,
-      `Work Email: ${getFieldValue(formData, "workEmail")}`,
-      `Phone Number: ${getFieldValue(formData, "phoneNumber") || "Not provided"}`,
-      `Type of Enquiry: ${getFieldValue(formData, "enquiryType")}`,
-      `Estimated Budget: ${getFieldValue(formData, "budget") || "Not provided"}`,
-      `Preferred Timeline: ${getFieldValue(formData, "timeline") || "Not provided"}`,
-      "",
-      "Campaign / Project Requirements:",
-      getFieldValue(formData, "requirements"),
-    ].join("\n");
+    setIsSubmitting(true);
+    setSubmissionState({ type: "idle", message: "" });
 
-    const mailtoHref =
-      `mailto:${destinationEmail}?subject=${encodeURIComponent(emailSubject)}` +
-      `&body=${encodeURIComponent(mailtoBody)}`;
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-    window.location.href = mailtoHref;
+      const result =
+        (await response.json().catch(() => null)) as { ok?: boolean } | null;
+
+      if (!response.ok || !result?.ok) {
+        throw new Error("Contact form submission failed.");
+      }
+
+      form.reset();
+      setSubmissionState({ type: "success", message: successMessage });
+    } catch {
+      setSubmissionState({ type: "error", message: errorMessage });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   const fieldClassName =
@@ -76,6 +141,20 @@ export default function ContactEnquiryForm() {
           className="mt-8 grid gap-5 md:grid-cols-2"
           onSubmit={handleSubmit}
         >
+          <div
+            className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden"
+            aria-hidden="true"
+          >
+            <label htmlFor="companyWebsite">Company Website</label>
+            <input
+              id="companyWebsite"
+              name="companyWebsite"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
           <div>
             <label className={labelClassName} htmlFor="fullName">
               Full Name
@@ -87,6 +166,7 @@ export default function ContactEnquiryForm() {
               autoComplete="name"
               required
               className={fieldClassName}
+              onInput={clearFieldError}
             />
           </div>
 
@@ -99,7 +179,6 @@ export default function ContactEnquiryForm() {
               name="company"
               type="text"
               autoComplete="organization"
-              required
               className={fieldClassName}
             />
           </div>
@@ -115,6 +194,7 @@ export default function ContactEnquiryForm() {
               autoComplete="email"
               required
               className={fieldClassName}
+              onInput={clearFieldError}
             />
           </div>
 
@@ -141,6 +221,7 @@ export default function ContactEnquiryForm() {
               required
               defaultValue=""
               className={fieldClassName}
+              onInput={clearFieldError}
             >
               <option value="" disabled>
                 Select an enquiry type
@@ -163,6 +244,7 @@ export default function ContactEnquiryForm() {
               rows={6}
               required
               className={`${fieldClassName} resize-y py-4`}
+              onInput={clearFieldError}
             />
           </div>
 
@@ -195,12 +277,24 @@ export default function ContactEnquiryForm() {
           <div className="md:col-span-2 space-y-3 pt-2">
             <button
               type="submit"
-              className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-imn-orange to-[#FF6B3D] px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_40px_-18px_rgba(240,77,36,0.85)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-imn-orange/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              disabled={isSubmitting}
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-imn-orange to-[#FF6B3D] px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_40px_-18px_rgba(240,77,36,0.85)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-imn-orange/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:translate-y-0"
             >
-              Submit Enquiry
+              {isSubmitting ? "Sending..." : "Submit Enquiry"}
             </button>
-            <p className="text-xs text-white/50">
-              Submitting opens your email client with your enquiry pre-filled for our new business team.
+            <p
+              aria-live="polite"
+              className={
+                submissionState.type === "idle"
+                  ? "text-xs text-white/50"
+                  : submissionState.type === "success"
+                    ? "text-sm text-[#FFD6C7]"
+                    : "text-sm text-[#FFE0D6]"
+              }
+            >
+              {submissionState.type === "idle"
+                ? "Your enquiry will be sent directly to our new business team."
+                : submissionState.message}
             </p>
           </div>
         </form>
