@@ -21,10 +21,10 @@ export default function HowWeWork() {
           />
         </Reveal>
 
-        <div className="mt-10 lg:mt-14">
+        <div className="mt-8 lg:mt-10">
           <Reveal
             delay={100}
-            className="body-copy mb-10 max-w-3xl space-y-4 text-white/90"
+            className="body-copy mb-8 max-w-3xl space-y-4 text-white/90 md:mb-9"
           >
             <p className="text-lg text-white/80">
               Everything we do is built on four core principles. They&apos;re
@@ -32,7 +32,7 @@ export default function HowWeWork() {
             </p>
           </Reveal>
 
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
             <div className="body-copy space-y-6 text-white">
               <Reveal delay={160}>
                 <div>

@@ -4,11 +4,14 @@ import { useEffect } from "react";
 
 export default function PageEffects() {
   useEffect(() => {
-    const targets = Array.from(
+    const sectionTargets = Array.from(
       document.querySelectorAll<HTMLElement>("[data-animate=section]"),
     );
+    const revealTargets = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal=true]"),
+    );
 
-    if (targets.length === 0) {
+    if (sectionTargets.length === 0 && revealTargets.length === 0) {
       return;
     }
 
@@ -17,28 +20,48 @@ export default function PageEffects() {
     ).matches;
 
     if (reducedMotion || !("IntersectionObserver" in window)) {
-      targets.forEach((target) => target.classList.add("is-visible"));
+      sectionTargets.forEach((target) => target.classList.add("is-visible"));
+      revealTargets.forEach((target) => target.classList.add("is-visible"));
       return;
     }
 
-    const observer = new IntersectionObserver(
+    const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+            sectionObserver.unobserve(entry.target);
           }
         });
       },
       {
-        rootMargin: "0px 0px -12% 0px",
-        threshold: 0.14,
+        rootMargin: "0px 0px -10% 0px",
+        threshold: 0.1,
       },
     );
 
-    targets.forEach((target) => observer.observe(target));
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.12,
+      },
+    );
 
-    return () => observer.disconnect();
+    sectionTargets.forEach((target) => sectionObserver.observe(target));
+    revealTargets.forEach((target) => revealObserver.observe(target));
+
+    return () => {
+      sectionObserver.disconnect();
+      revealObserver.disconnect();
+    };
   }, []);
 
   return null;

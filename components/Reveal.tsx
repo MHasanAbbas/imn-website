@@ -21,8 +21,8 @@ export default function Reveal<T extends ElementType = "div">({
   children,
   className = "",
   delay = 0,
-  duration = 680,
-  distance = 24,
+  duration = 620,
+  distance = 18,
   once = true,
   style,
   ...props
