@@ -8,17 +8,6 @@ type SectionHeaderProps = {
   className?: string;
 };
 
-const highlightPalette: Record<HighlightColor, string> = {
-  orange: "text-imn-orange",
-  teal: "text-imn-teal",
-  purple: "text-imn-purple",
-};
-const highlightHexPalette: Record<HighlightColor, string> = {
-  orange: "#F04D24",
-  teal: "#00A7A0",
-  purple: "#7C3AED",
-};
-
 export default function SectionHeader({
   title,
   highlight,
@@ -29,8 +18,6 @@ export default function SectionHeader({
   const HeadingTag = as;
   const sizeClass =
     as === "h1" ? "text-4xl md:text-5xl" : "text-3xl md:text-[34px]";
-  const highlightClass = highlightPalette[highlightColor] ?? highlightPalette.orange;
-  const highlightHex = highlightHexPalette[highlightColor] ?? highlightHexPalette.orange;
   const hasCustomTextColor = className
     .split(/\s+/)
     .filter(Boolean)

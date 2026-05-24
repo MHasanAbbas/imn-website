@@ -21,7 +21,7 @@ export default function About() {
 
         <div className="mt-8 max-w-3xl body-copy space-y-5 text-imn-black">
           <div>
-            <strong>The bridge between brands and multicultural Britan</strong>
+            <strong>The bridge between brands and multicultural Britain</strong>
             <br />
             We are a multicultural media network dedicated to connecting media agencies and multicultural communities. Our goal is to drive incremental reach and growth through culturally relevant content that creates authentic connections and increases brand visibility.
           </div>

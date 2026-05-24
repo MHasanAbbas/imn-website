@@ -24,13 +24,13 @@ export default function Team() {
             <strong>The People Behind the Platform</strong>
           </div>
           <p>
-            IMN is powered by a team with deep experience across media, partnerships, and multicultural marketing. We&apos;ve worked agency-side, brand-side, and platform-side-so we understand every angle of what makes campaigns succeed.
+            IMN is powered by a team with deep experience across media, partnerships, and multicultural marketing. We&apos;ve worked agency-side, brand-side, and platform-side, so we understand every angle of what makes campaigns succeed.
           </p>
           <p>
             What sets us apart? We&apos;re not just selling media. We&apos;re building bridges between brands and the communities they want to reach.
           </p>
           <p className="text-black/70">
-            [Note: Team member profiles to be added once approved]
+            Team member profiles will be added following final approval.
           </p>
         </div>
       </div>
