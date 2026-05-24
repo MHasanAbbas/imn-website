@@ -74,8 +74,7 @@ html {
   }
 }
 
-/* Subtle fade-in on sections and content */
-.section-fade,
+/* Subtle fade-in on section content */
 .reveal-fade {
   opacity: 0;
   transform: translate3d(0, var(--reveal-distance, 24px), 0);
@@ -87,18 +86,17 @@ html {
 }
 
 .section-fade {
-  --reveal-distance: 18px;
-  --reveal-duration: 760ms;
+  opacity: 1;
+  transform: none;
 }
 
-.section-fade.is-visible,
+.section-fade.is-visible .reveal-fade,
 .reveal-fade.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .section-fade,
   .reveal-fade {
     opacity: 1;
     transform: none;

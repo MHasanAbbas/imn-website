@@ -5,9 +5,7 @@ import { useEffect } from "react";
 export default function PageEffects() {
   useEffect(() => {
     const targets = Array.from(
-      document.querySelectorAll<HTMLElement>(
-        "[data-animate=section], [data-reveal=true]",
-      ),
+      document.querySelectorAll<HTMLElement>("[data-animate=section]"),
     );
 
     if (targets.length === 0) {
@@ -28,12 +26,7 @@ export default function PageEffects() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-
-            if (entry.target.getAttribute("data-reveal-once") !== "false") {
-              observer.unobserve(entry.target);
-            }
-          } else if (entry.target.getAttribute("data-reveal-once") === "false") {
-            entry.target.classList.remove("is-visible");
+            observer.unobserve(entry.target);
           }
         });
       },
