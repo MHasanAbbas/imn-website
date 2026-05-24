@@ -2,6 +2,7 @@
 import Footer from "@/components/Footer";
 
 import Hero from "@/components/sections/Hero";
+import CommunityVisual from "@/components/sections/CommunityVisual";
 import About from "@/components/sections/About";
 import VisionMission from "@/components/sections/VisionMission";
 import MissionStatement from "@/components/sections/MissionStatement";
@@ -20,6 +21,7 @@ export default function Home() {
       <PageEffects />
       <Navbar />
       <Hero />
+      <CommunityVisual />
       <About />
       <Services />
       <VisionMission />

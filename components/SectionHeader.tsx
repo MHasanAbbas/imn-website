@@ -17,9 +17,7 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   const HeadingTag = as;
   const sizeClass =
-    as === "h1"
-      ? "text-[3.05rem] sm:text-[4rem] md:text-[4.7rem] lg:text-[5.25rem]"
-      : "text-[2.05rem] sm:text-[2.35rem] md:text-[2.7rem]";
+    as === "h1" ? "text-4xl md:text-5xl" : "text-3xl md:text-[34px]";
   const hasCustomTextColor = className
     .split(/\s+/)
     .filter(Boolean)
@@ -72,15 +70,15 @@ export default function SectionHeader({
     : title;
 
   return (
-    <div className={`flex flex-col items-start gap-4 ${className}`.trim()}>
+    <div className={`flex flex-col items-start gap-3 ${className}`.trim()}>
       <HeadingTag
-        className={`heading font-bold leading-[1.02] tracking-tight ${sizeClass} ${headingColorClass}`.trim()}
+        className={`heading font-bold leading-[1.05] tracking-tight ${sizeClass} ${headingColorClass}`.trim()}
         style={headingShadowStyle}
       >
         {renderedTitle}
       </HeadingTag>
       <span
-        className={`block h-1 w-20 rounded-full ${accentBarColors[highlightColor]} shadow-[0_2px_8px_rgba(0,0,0,0.3)]`}
+        className={`block h-1 w-16 rounded-full ${accentBarColors[highlightColor]} shadow-[0_2px_8px_rgba(0,0,0,0.3)]`}
         aria-hidden="true"
       />
     </div>
