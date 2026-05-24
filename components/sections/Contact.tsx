@@ -1,3 +1,4 @@
+import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 import ContactEnquiryForm from "@/components/sections/ContactEnquiryForm";
 
@@ -16,17 +17,20 @@ export default function Contact() {
         <div className="absolute bottom-0 right-[-7rem] h-64 w-64 rounded-full bg-white/[0.05] blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <div className="flex flex-col gap-3">
+      <div className="section-shell relative mx-auto max-w-6xl px-6">
+        <Reveal className="flex flex-col gap-3">
           <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70 md:text-xs">
             Contact
           </p>
           <SectionHeader title="Contact us" highlight="Contact" />
-        </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
+        <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
           <div className="space-y-6 lg:pr-4">
-            <div className="contact-card rounded-[28px] p-7 md:p-8">
+            <Reveal
+              delay={90}
+              className="contact-card rounded-[28px] p-7 md:p-8"
+            >
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/60 md:text-xs">
                 New Business
               </p>
@@ -44,10 +48,13 @@ export default function Contact() {
                   website enquiry form.
                 </p>
               </div>
-            </div>
+            </Reveal>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              <div className="contact-card rounded-[24px] p-6">
+              <Reveal
+                delay={170}
+                className="contact-card rounded-[24px] p-6"
+              >
                 <div className="flex items-start gap-4">
                   <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-imn-orange">
                     <svg
@@ -78,9 +85,12 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Reveal>
 
-              <div className="contact-card rounded-[24px] p-6">
+              <Reveal
+                delay={260}
+                className="contact-card rounded-[24px] p-6"
+              >
                 <div className="flex items-start gap-4">
                   <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-imn-orange">
                     <svg
@@ -115,10 +125,13 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
 
-            <div className="flex max-w-xl items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/62 shadow-[0_22px_70px_-52px_rgba(0,0,0,0.75)]">
+            <Reveal
+              delay={340}
+              className="flex max-w-xl items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/62 shadow-[0_22px_70px_-52px_rgba(0,0,0,0.75)]"
+            >
               <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-imn-orange/12 text-imn-orange">
                 <svg
                   viewBox="0 0 24 24"
@@ -138,10 +151,12 @@ export default function Contact() {
               <p className="leading-6">
                 Confidential &mdash; Not for Public Consumption or Distribution
               </p>
-            </div>
+            </Reveal>
           </div>
 
-          <ContactEnquiryForm />
+          <Reveal delay={180}>
+            <ContactEnquiryForm />
+          </Reveal>
         </div>
       </div>
     </section>

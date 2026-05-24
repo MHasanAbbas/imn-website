@@ -1,3 +1,4 @@
+import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 
 export default function HowWeChange() {
@@ -7,8 +8,8 @@ export default function HowWeChange() {
       data-animate="section"
       className="section-fade section-offset bg-imn-black text-imn-white"
     >
-      <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <div className="flex flex-col gap-3">
+      <div className="section-shell mx-auto max-w-6xl px-6">
+        <Reveal className="flex flex-col gap-3">
           <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70 md:text-xs">
             Focus Areas
           </p>
@@ -16,28 +17,42 @@ export default function HowWeChange() {
             title="How We Change This Year"
             highlight="Change"
           />
-        </div>
+        </Reveal>
 
         <div className="mt-8 max-w-3xl body-copy space-y-4 text-white">
-          <div>
-            <strong>Always Evolving</strong>
-          </div>
-          <p>The media landscape doesn&apos;t stand still, and neither do we. This year, we&apos;re focused on:</p>
+          <Reveal delay={80}>
+            <div>
+              <strong>Always Evolving</strong>
+            </div>
+          </Reveal>
+
+          <Reveal as="p" delay={140}>
+            The media landscape doesn&apos;t stand still, and neither do we.
+            This year, we&apos;re focused on:
+          </Reveal>
+
           <ul className="list-disc list-inside space-y-2">
-            <li>
-              <strong>Expanding our network</strong> - More platforms, more voices, more reach
-            </li>
-            <li>
-              <strong>Deepening our expertise</strong> - Staying ahead of cultural trends and audience shifts
-            </li>
-            <li>
-              <strong>Strengthening partnerships</strong> - Building longer-term relationships that grow with our clients
-            </li>
-            <li>
-              <strong>Investing in innovation</strong> - New formats, new channels, new ways to connect
-            </li>
+            <Reveal as="li" delay={220}>
+              <strong>Expanding our network</strong> - More platforms, more
+              voices, more reach
+            </Reveal>
+            <Reveal as="li" delay={300}>
+              <strong>Deepening our expertise</strong> - Staying ahead of
+              cultural trends and audience shifts
+            </Reveal>
+            <Reveal as="li" delay={380}>
+              <strong>Strengthening partnerships</strong> - Building
+              longer-term relationships that grow with our clients
+            </Reveal>
+            <Reveal as="li" delay={460}>
+              <strong>Investing in innovation</strong> - New formats, new
+              channels, new ways to connect
+            </Reveal>
           </ul>
-          <p>We&apos;re not chasing trends. We&apos;re setting them.</p>
+
+          <Reveal as="p" delay={540}>
+            We&apos;re not chasing trends. We&apos;re setting them.
+          </Reveal>
         </div>
       </div>
     </section>

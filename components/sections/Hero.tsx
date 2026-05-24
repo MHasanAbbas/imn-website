@@ -1,3 +1,4 @@
+import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 
 export default function Hero() {
@@ -7,8 +8,8 @@ export default function Hero() {
       data-animate="section"
       className="section-fade section-offset bg-imn-black text-imn-white"
     >
-      <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <div className="flex flex-col gap-3">
+      <div className="section-shell-hero mx-auto max-w-6xl px-6">
+        <Reveal className="flex flex-col gap-3">
           <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70 md:text-xs">
             Inclusive Media Network
           </p>
@@ -17,10 +18,16 @@ export default function Hero() {
             title="Where brands meet multicultural Britain."
             highlight="multicultural"
           />
-        </div>
-        <p className="body-copy mt-6 max-w-3xl text-base text-white/80 md:text-lg">
-          We help reach diverse communities of the UK through multicultural media and content.
-        </p>
+        </Reveal>
+
+        <Reveal
+          as="p"
+          delay={120}
+          className="body-copy mt-6 max-w-3xl text-base text-white/80 md:text-lg"
+        >
+          We help reach diverse communities of the UK through multicultural
+          media and content.
+        </Reveal>
       </div>
     </section>
   );

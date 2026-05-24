@@ -42,23 +42,68 @@ html {
   scroll-margin-top: 96px;
 }
 
-/* Subtle fade-in on sections */
-.section-fade {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+.section-shell {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
-.section-fade.is-visible {
+.section-shell-hero {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.section-shell-media {
+  padding-top: 0.75rem;
+  padding-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-shell {
+    padding-top: 5.25rem;
+    padding-bottom: 5.25rem;
+  }
+
+  .section-shell-hero {
+    padding-top: 6.5rem;
+    padding-bottom: 6rem;
+  }
+
+  .section-shell-media {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Subtle fade-in on sections and content */
+.section-fade,
+.reveal-fade {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance, 24px), 0);
+  transition-property: opacity, transform;
+  transition-duration: var(--reveal-duration, 720ms);
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.section-fade {
+  --reveal-distance: 18px;
+  --reveal-duration: 760ms;
+}
+
+.section-fade.is-visible,
+.reveal-fade.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .section-fade {
+  .section-fade,
+  .reveal-fade {
     opacity: 1;
     transform: none;
     transition: none;
+    will-change: auto;
   }
 }
 
@@ -145,8 +190,16 @@ html {
 }
 
 .contact-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
+  background-color: rgba(10, 10, 10, 0.92);
+  background-image: none;
   color-scheme: dark;
+}
+
+.contact-select::-ms-expand {
+  display: none;
 }
 
 .contact-select:invalid {
