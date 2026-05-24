@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   description:
     "Inclusive Media Network connects brands with multicultural audiences through strategic media, partnerships, and content.",
   applicationName: "Inclusive Media Network",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export const viewport: Viewport = {

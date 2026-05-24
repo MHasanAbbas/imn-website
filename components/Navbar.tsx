@@ -99,19 +99,19 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-imn-black/90 backdrop-blur border-b border-white/10">
-      <nav className="mx-auto max-w-6xl px-4 md:px-6 py-4 flex items-center justify-between gap-3 flex-wrap">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-imn-black/88 backdrop-blur-xl">
+      <nav className="site-frame flex flex-wrap items-center justify-between gap-3 py-4 md:py-5">
         <a href="#top" className="flex items-center">
           <Image
             src="/brand/Lockup-Hero.png"
             alt="Inclusive Media Network"
-            width={150}
-            height={42}
+            width={158}
+            height={44}
             priority
           />
         </a>
 
-        <div className="flex items-center gap-3 sm:gap-4 text-sm flex-wrap">
+        <div className="flex flex-wrap items-center justify-end gap-2.5 text-sm sm:gap-3 md:gap-4">
           {navLinks.map(({ id, label }) => {
             const isActive = activeSection === id;
 
@@ -120,7 +120,7 @@ export default function Navbar() {
                 key={id}
                 href={`#${id}`}
                 aria-current={isActive ? "page" : undefined}
-                className={`nav-link inline-flex h-9 items-center rounded-full px-3 leading-none transition-colors ${
+                className={`nav-link inline-flex h-9 items-center rounded-full px-3.5 text-[13px] leading-none transition-colors md:px-4 md:text-sm ${
                   isActive ? "text-[#F04D24] font-semibold is-active" : "text-white/90"
                 } hover:text-[#F04D24] focus-visible:ring-0 focus-visible:shadow-none`}
                 style={isActive ? { color: brandOrange } : undefined}
